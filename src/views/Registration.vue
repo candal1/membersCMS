@@ -1,22 +1,28 @@
+<!--
+    TODO Form validation, error message display
+    TODO CSS styling, layout
+    TODO (CSS) no confirm password field 
+            -> add form unmasking to password field 
+-->
 <template>
     <div>
         <h2>Register</h2>
-        <form @submit.prevent="handleSubmit"> // TODO form validation
+        <form @submit.prevent="handleSubmit"> 
             <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input required type="text" v-model="firstName" name="firstName" >
+                <input required type="text" v-model="user.firstName" name="firstName" >
             </div>
             <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input required type="text" v-model="lastName" name="lastName" >
+                <input required type="text" v-model="user.lastName" name="lastName" >
             </div>
             <div class="form-group">
-                <label for="username">Username</label>
-                <input required type="text" v-model="username" name="username">
+                <label for="email">Email</label>
+                <input required type="text" v-model="user.email" name="email">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input required type="password" v-model="password" name="password">
+                <input required type="password" v-model="user.password" name="password">
             </div>
             <div class="form-group">
                 <button :disabled="status.registering">Register</button>
@@ -35,7 +41,7 @@ export default {
             user: {
                 firstName: '',
                 lastName: '',
-                username: '',
+                email: '',
                 password: ''
             }
         }
@@ -45,8 +51,7 @@ export default {
     },
     methods: {
         ...mapActions('account', ['register']),
-        handleSubmit (e) {
-            // TODO: add form validation
+        handleSubmit () {
             this.register(this.user);
         }
     },
@@ -54,5 +59,4 @@ export default {
 </script>
 
 <style scoped>
-/* TODO styling */
 </style>
