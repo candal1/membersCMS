@@ -9,6 +9,7 @@ Description coming soon
  - Vue.js 
  - Vuex, Vue Router
  - Tailwind CSS (planned)
- - DirectusCMS
+ - DirectusCMS ( MySQL, PHP, apache )
+ - Docker
  - Socket.io (planned)
 ```
