@@ -17,8 +17,3 @@ export default {
 }
 </script>
 
-<style scoped>
-p {
-  width: 20em; 
-}
-</style>
