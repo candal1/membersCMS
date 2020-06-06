@@ -1,24 +1,15 @@
-# frontend
+# Membership Website
 
-## Project setup
+## Dolphin Healing Hands
 ```
-npm install
+Description coming soon
 ```
-
-### Compiles and hot-reloads for development
+## Technologies
 ```
-npm run serve
+ - Vue.js 
+ - Vuex, Vue Router
+ - Tailwind CSS (planned)
+ - DirectusCMS ( MySQL, PHP, apache )
+ - Docker
+ - Socket.io (planned)
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

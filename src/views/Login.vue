@@ -1,13 +1,17 @@
+<!--    
+    TODO css styling
+    TODO form validation
+ -->
 <template>
     <div>
     <h2>Login</h2>
-    <form @submit.prevent="handleSubmit"> // TODO form validation
+    <form @submit.prevent="handleSubmit">
            <div class="form-group">
-            <label for="username">Username</label>
-            <input required type="text" v-model="username" name="username" placeholder="Enter Username">
+            <label for="email">Email</label> <br>
+            <input required type="text" v-model="email" name="email" placeholder="Enter email...">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Password</label> <br>
             <input required type="password" v-model="password" name="password" placeholder="Password">
         </div>
         <div class="form-group">
@@ -19,13 +23,13 @@
 </template>
 
 <script>
-import {mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
  
 export default {
     name: "Login",
     data () {
         return {
-            username: '',
+            email: '',
             password: ''
         }
     },
@@ -37,10 +41,10 @@ export default {
     },
     methods: {
         ...mapActions('account',  ['login', 'logout']),
-        handleSubmit (e) {
-            const { username, password } = this;
-            if(username && password) {
-                this.login({username, password})
+        handleSubmit () {
+            const { email, password } = this;
+            if(email && password) {
+                this.login({email, password})
             }
         }
     }
@@ -48,5 +52,7 @@ export default {
 </script>
 
 <style>
-    /* TODO styling */
+.form-group {
+    padding: .25em; 
+}
 </style>
