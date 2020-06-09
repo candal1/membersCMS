@@ -5,27 +5,27 @@
             -> add form unmasking to password field 
 -->
 <template>
-    <div>
-        <h2>Register</h2>
-        <form @submit.prevent="handleSubmit"> 
-            <div class="form-group">
+    <div class="mt-20 mb-10 flex justify-center content-center"> 
+        <form class="bg-white shadow-md border rounded-lg px-20 pt-10 pb-12 mb-4" @submit.prevent="handleSubmit">
+            <h2 class="mb-10 text-3xl">Register</h2>
+            <div class="mb-4">
                 <label for="firstName">First Name</label>
-                <input required type="text" v-model="user.firstName" name="firstName" >
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="user.firstName" name="firstName" >
             </div>
-            <div class="form-group">
+            <div class="mb-4">
                 <label for="lastName">Last Name</label>
-                <input required type="text" v-model="user.lastName" name="lastName" >
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="user.lastName" name="lastName" >
             </div>
-            <div class="form-group">
+            <div class="mb-4">
                 <label for="email">Email</label>
-                <input required type="text" v-model="user.email" name="email">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="user.email" name="email">
             </div>
-            <div class="form-group">
+            <div class="mb-4">
                 <label for="password">Password</label>
-                <input required type="password" v-model="user.password" name="password">
+                <passwordShow @password-update="mapPassword"></passwordShow>
             </div>
-            <div class="form-group">
-                <button :disabled="status.registering">Register</button>
+            <div class="mb-4">
+                <button class="bg-teal-600 opacity-75 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" :disabled="status.registering">Register</button>
             </div>
         </form>
     </div>
@@ -33,9 +33,13 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import passwordShow from '@/components/passwordShow.vue'
 
 export default {
     name: "Registration",
+    components: {
+        passwordShow
+    },
     data() {
         return {
             user: {
@@ -53,6 +57,9 @@ export default {
         ...mapActions('account', ['register']),
         handleSubmit () {
             this.register(this.user);
+        },
+        mapPassword (e) {
+            this.user.password = e;
         }
     },
 }
