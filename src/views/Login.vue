@@ -11,7 +11,7 @@
         </div>
         <div class="mb-4">
             <label for="password">Password</label> <br>
-            <passwordShow @pass-update="mapPassword"></passwordShow>
+            <passwordShow @password-update="mapPassword"></passwordShow>
         </div>
         <div class="flex items-center justify-between">
             <button class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" :disabled="status.loggingIn">Login</button>

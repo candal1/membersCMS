@@ -1,3 +1,8 @@
+<!--
+    passwordShow:
+    simple password input with ability to show/hide the password text
+
+-->
 <template>
     <div class="flex items-center shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus-within:outline-none focus-within:shadow-outline" >
         <input class="flex-grow border-none " @input="emitPassword" required :type="fieldType" v-model="password" name="password" placeholder="Password">
