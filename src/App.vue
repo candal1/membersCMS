@@ -1,9 +1,10 @@
 <template>
   <div class="h-screen bg-orange-100" id="app">
-    <div class="flex justify-start border-b-4 bg-orange-200">
-      <router-link class="inline-block py-2 px-4 text-teal-500 hover:text-teal-800 font-semibold" to="/">Home</router-link> 
-      <router-link class="inline-block py-2 px-4 text-teal-500 hover:text-teal-800 font-semibold" to="/login">Login</router-link> 
-      <router-link class="inline-block py-2 px-4 text-teal-500 hover:text-teal-800 font-semibold" to="/about">About</router-link>
+    <div class="flex justify-start items-center border-b-2 bg-orange-200 transition">
+      <img class="rounded-full h-auto w-12 m-1" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png">
+      <router-link class="inline-block py-2 px-4 text-teal-500 hover:text-teal-900 font-semibold transition ease-linear duration-1000" to="/">Home</router-link> 
+      <router-link class="inline-block py-2 px-4 text-teal-500 hover:text-teal-900 font-semibold transition ease-linear duration-1000" to="/about">About</router-link>
+      <router-link class="inline-block py-2 px-4 ml-auto text-teal-500 hover:text-teal-900 font-semibold transition ease-linear duration-1000" to="/login">Login</router-link> 
     </div>
     <div id="alert" v-if="alert.message" :class="`alert ${alert.type}`">{{alert.message}}</div>
     <router-view class=""></router-view>
