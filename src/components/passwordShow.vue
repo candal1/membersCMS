@@ -6,7 +6,7 @@
 <template>
     <div class="flex items-center shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus-within:outline-none focus-within:shadow-outline" >
         <input class="flex-grow" @input="emitPassword" required :type="fieldType" v-model="password" name="password" placeholder="Password">
-        <button class="flex-grow-0 w-6 h-6 focus:outline-none m-0" type="button" @mousedown="switchVisible" @mouseup="switchVisible"><img class="appearance-none" :src="imgSource"></button>
+        <button class="flex-grow-0 w-6 h-6 focus:outline-none m-0" type="button" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass"><img class="appearance-none opacity-25 hover:opacity-75" :src="imgSource"></button>
     </div>
 </template>
 
@@ -29,9 +29,13 @@
            this.image2 = require('../assets/hide-pass.png')
        },
        methods: {
-           switchVisible () {
-               this.fieldType = this.fieldType === 'password' ? 'text' : 'password';
-               this.imgSource = this.imgSource === this.image1 ? this.image2 : this.image1;
+           showPass () {
+               this.fieldType = 'text';
+               this.imgSource = this.image2;
+           },
+           hidePass () {
+               this.fieldType = 'password';
+               this.imgSource = this.image1;
            },
            emitPassword () {
                this.$emit('password-update', this.password);

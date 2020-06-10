@@ -3,8 +3,8 @@
     TODO form validation
  -->
 <template>
-    <div class="mt-20 mb-10 flex justify-center content-center"> 
-    <form class="bg-white shadow-md border rounded-lg px-20 pt-16 pb-16 mb-4" @submit.prevent="handleSubmit">
+    <div class="my-16 flex justify-center content-center"> 
+    <form class="bg-white shadow-md border rounded-lg px-16 py-16 mb-4" @submit.prevent="handleSubmit">
         <div class="mb-4">
             <label for="email">Email</label> <br>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="email" name="email" placeholder="Enter email...">
