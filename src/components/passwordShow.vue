@@ -4,9 +4,10 @@
 
 -->
 <template>
-    <div class="flex items-center shadow appearance-none border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus-within:outline-none focus-within:shadow-outline" >
-        <input class="flex-grow" @input="emitPassword" required :type="fieldType" v-model="password" name="password" placeholder="Password">
-        <button class="flex-grow-0 w-6 h-6 focus:outline-none m-0" type="button" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass"><img class="appearance-none opacity-25 hover:opacity-75" :src="imgSource"></button>
+    <div class="flex items-center shadow appearance-none border rounded bg-white w-full h-full text-gray-700 leading-tight focus-within:outline-none focus-within:shadow-outline relative" >
+        <input class="flex-grow rounded p-2" @input="emitPassword" required :type="fieldType" v-model="password" name="password" :placeholder="placeholder">
+        
+        <button class="w-6 h-6 mr-2 focus:outline-none absolute right-2 right-0" type="button" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass"><img class="appearance-none opacity-25 hover:opacity-75" :src="imgSource"></button>
     </div>
 </template>
 
@@ -14,6 +15,9 @@
     //TODO disable required input and setup formal validation
     export default {
        name: 'passwordShow',
+       props: {
+           placeholder: String
+       },
        data () {
             return {
                password: '',

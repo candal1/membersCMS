@@ -2,4 +2,35 @@
 
 @tailwind components;
 
+.input-base {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight; 
+}
+.input-base:focus {
+    @apply outline-none shadow-outline;
+}
+
+.btn-teal {
+    @apply bg-teal-500 text-white font-bold py-2 px-3 rounded;
+}
+
+.btn-teal:hover {
+    @apply bg-teal-700;
+}
+
+.btn-teal:focus {
+    @apply outline-none shadow-outline;
+}
+
+.header-style {
+    @apply font-semibold text-3xl py-4 text-teal-700 tracking-wider;
+}
+
+.nav-link {
+    @apply py-2 px-4 text-teal-500 font-semibold;
+}
+
+.nav-link:hover {
+    @apply text-teal-800;
+}
+
 @tailwind utilities;

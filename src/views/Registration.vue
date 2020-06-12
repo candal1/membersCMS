@@ -5,27 +5,27 @@
             -> add form unmasking to password field 
 -->
 <template>
-    <div class="mt-20 mb-10 flex justify-center content-center"> 
-        <form class="bg-white shadow-md border rounded-lg px-20 pt-10 pb-12 mb-4" @submit.prevent="handleSubmit">
-            <h2 class="mb-10 text-3xl">Register</h2>
+    <div class="flex justify-center items-center mt-10"> 
+        <form class="bg-white shadow-md rounded my-20 py-10 px-12 mx-4 text-gray-600" @submit.prevent="handleSubmit">
+            <h2 class="header-style">Register</h2>
             <div class="mb-4">
                 <label for="firstName">First Name</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="user.firstName" name="firstName" >
+                <input class="input-base" required type="text" v-model="user.firstName" name="firstName">
             </div>
             <div class="mb-4">
                 <label for="lastName">Last Name</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="user.lastName" name="lastName" >
+                <input class="input-base" required type="text" v-model="user.lastName" name="lastName" >
             </div>
             <div class="mb-4">
                 <label for="email">Email</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required type="text" v-model="user.email" name="email">
+                <input class="input-base" required type="text" v-model="user.email" name="email">
             </div>
             <div class="mb-4">
                 <label for="password">Password</label>
                 <passwordShow @password-update="mapPassword"></passwordShow>
             </div>
             <div class="mb-4">
-                <button class="bg-teal-600 opacity-75 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" :disabled="status.registering">Register</button>
+                <button class="btn-teal" >Register</button>
             </div>
         </form>
     </div>
@@ -64,3 +64,4 @@ export default {
     },
 }
 </script>
+asd
