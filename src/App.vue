@@ -8,7 +8,7 @@
         <router-link class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg" to="/register">Sign Up</router-link> 
       </div>
     <div class="flex justify-center">
-      <alert class="" v-if="alert.message" :message="alert.message" @clear="clearAlert" ></alert>
+      <alert class="" v-if="alert.message" :message="String(alert.message)" @clear="clearAlert" ></alert>
     </div>
     <router-view class=""></router-view>
     <foot></foot>
