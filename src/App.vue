@@ -1,30 +1,32 @@
 <template>
   <div class="h-auto md:h-screen bg-orange-100" id="app">
       <div class="md:fixed w-full px-1 md:px-3 py-2 flex justify-start items-center shadow-md bg-orange-100 text-center">
-        <img class="rounded-full h-auto w-12 transition ease-in-out duration-300 transform hover:scale-110" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png">
+        <img class="rounded-full w-10 transition ease-in-out duration-300 transform hover:scale-125" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png">
         <router-link class="nav-link" to="/">Home</router-link> 
+        <router-link class="nav-link" to="/lessons">Lessons</router-link>
         <router-link class="nav-link" to="/about">About</router-link>
-        <router-link class="nav-link ml-auto" to="/login">Login</router-link> 
-        <router-link class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg" to="/register">Sign Up</router-link> 
+        <router-link v-if="!loggedIn" class="nav-link ml-auto" to="/login">Login</router-link> 
+        <router-link v-if="!loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none" to="/register">Sign Up</router-link> 
+        <router-link v-if="loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none ml-auto" to="/login">Logout</router-link> 
       </div>
     <div class="flex justify-center">
-      <alert class="" v-if="alert.message" :message="String(alert.message)" @clear="clearAlert" ></alert>
+      <AlertItem class="" v-if="alert.message" :message="String(alert.message)" @clear="clearAlert"/>
     </div>
-    <router-view class=""></router-view>
-    <foot></foot>
+    <router-view class=""/>
+    <FootItem/>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import alert from '@/components/alert.vue'
-import foot from '@/components/foot.vue'
+import AlertItem  from '@/components/AlertItem.vue'
+import FootItem from '@/components/FootItem.vue'
 
 export default {
     name: 'app',
     components: {
-      alert,
-      foot 
+      AlertItem,
+      FootItem
     },
     computed: {
       ...mapState({ 

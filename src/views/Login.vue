@@ -12,11 +12,12 @@
             </div>
             <div class="mb-4">
                 <label for="password">Password</label> <br>
-                <passwordShow @password-update="mapPassword" placeholder="Enter password..." ></passwordShow>
+                <passwordShow @password-update="mapPassword" placeholder="Enter password..."/>
             </div>
             <div class="flex items-center justify-between">
                 <button class="btn-teal" :disabled="status.loggingIn">Login</button>
-                <router-link class="inline-block align-baseline font-bold text-sm text-teal-500 hover:text-teal-800" to="/register">Registration</router-link>
+                <router-link class="inline-block align-baseline font-bold text-sm text-teal-500 hover:text-teal-800" to="/register">Sign Up</router-link>
+                <span v-show="status.loggingIn" class="loader"/>
             </div>
         </form>
   </div>
@@ -24,12 +25,12 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
-import passwordShow from '@/components/passwordShow.vue'
+import PasswordShow from '@/components/PasswordShow.vue'
  
 export default {
     name: "Login",
     components: {
-        passwordShow
+        PasswordShow
     },
     data () {
         return {
@@ -39,9 +40,11 @@ export default {
     },
     computed: {
         ...mapState('account', ['status'])
+
     },
     created () {
         this.logout();
+        this.loading = false;
     },
     methods: {
         ...mapActions('account',  ['login', 'logout']),
@@ -50,7 +53,8 @@ export default {
             if(email && password) {
                 this.login({email, password})
             }
-        },
+        },   
+            
         // Map password field form passwordShow component to this.password
         mapPassword (e) {
             this.password = e
@@ -58,4 +62,3 @@ export default {
     }
 }
 </script>
-

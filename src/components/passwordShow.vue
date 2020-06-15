@@ -1,5 +1,5 @@
 <!--
-    passwordShow:
+    PasswordShow:
     simple password input with ability to show/hide the password text
 
 -->
@@ -14,7 +14,7 @@
 <script>
     //TODO disable required input and setup formal validation
     export default {
-       name: 'passwordShow',
+       name: 'PasswordShow',
        props: {
            placeholder: String
        },

@@ -1,8 +1,31 @@
 <template>
 <div class="flex justify-center">
   <div class="grid gap-5 m-10 mt-20 p-10 rounded text-gray-600">
-    <h1 class="header-style font-semibold border-b">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, eum!</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda tempora laboriosam itaque delectus obcaecati architecto, quibusdam, et sed, vero mollitia a exercitationem praesentium quos incidunt aliquid vel cum culpa. Optio, soluta accusantium. Distinctio, odit obcaecati tempora ratione ex assumenda, recusandae quam eius blanditiis iusto fugit iste impedit quod voluptates aspernatur!</p>
+    <h1 class="header-style font-semibold border-b">{{ header }}</h1>
+    <span v-html="text"></span>
   </div>
   </div>
 </template>
+
+<script>
+import DirectusSDK from "@directus/sdk-js";
+
+  export default {
+    name: 'About',
+    data () {
+      return {
+          header: '',
+          text: ''
+      }
+    },
+    created () {
+      const client2 = new DirectusSDK({url: "http://localhost:8082", project: "_"});
+      client2.getItems("about_page")
+      .then (data => {
+        this.header = data['data'][0]['header'];
+        this.text = data['data'][0]['body2'];
+        })
+
+    }
+  }
+</script>

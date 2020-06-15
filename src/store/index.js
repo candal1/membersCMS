@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { account } from './account_module';
-import { alert } from './alert_module'
+import { account } from './modules/account_module';
+import { alert } from './modules/alert_module'
 
 Vue.use(Vuex)
 

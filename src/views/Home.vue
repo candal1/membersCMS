@@ -1,10 +1,10 @@
 <template>
-<div class="lg:grid lg:grid-cols-2 gap-5 p-5 md:p-24">
+<div class="xl:grid grid-cols-2 gap-5 p-5 md:p-24">
 
   <div class="flex flex-col text-gray-600">
-    <div class="">
-      <img class=" rounded-full" alt="Dolphin H.H. emblem" src="../assets/dhh_tran.png">
-      <img class="" alt="Dolphin H.H. logo" src="../assets/dhh_logo_words.png">
+    <div class="flex pr-4">
+      <img class="object-contain" alt="Dolphin H.H. emblem" src="../assets/dhh_tran.png">
+      <img class="object-contain" alt="Dolphin H.H. logo" src="../assets/dhh_logo_words.png">
     </div>
     <h1 class="header-style">Welcome...</h1>
     <p class="text-s">Lorem ipsum dolor sit amet consectetur, 
@@ -25,13 +25,10 @@
       <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>
     </ol>
   </div>
-
 </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: 'Home',
 }

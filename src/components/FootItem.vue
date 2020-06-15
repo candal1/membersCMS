@@ -9,6 +9,6 @@
 
 <script>
     export default {
-       name: 'foot' 
+       name: 'FootItem' 
     }
 </script>

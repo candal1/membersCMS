@@ -22,10 +22,12 @@
             </div>
             <div class="mb-4">
                 <label for="password">Password</label>
-                <passwordShow @password-update="mapPassword"></passwordShow>
+                <PasswordShow @password-update="mapPassword"/>
             </div>
-            <div class="mb-4">
+            <div class="flex items-center justify-between">
                 <button class="btn-teal" >Register</button>
+                <router-link class="nav-link inline-block" to="/login">Back</router-link>
+                <span v-show="status.registering" class="loader"/>
             </div>
         </form>
     </div>
@@ -33,12 +35,12 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import passwordShow from '@/components/passwordShow.vue'
+import PasswordShow from '@/components/PasswordShow.vue'
 
 export default {
     name: "Registration",
     components: {
-        passwordShow
+        PasswordShow
     },
     data() {
         return {
@@ -64,4 +66,3 @@ export default {
     },
 }
 </script>
-asd
