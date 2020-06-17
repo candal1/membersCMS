@@ -17,7 +17,7 @@
   </div>
 
   <div class="flex flex-col text-gray-600">
-    <h1 class="header-style">Announcments</h1>
+    <h1 class="header-style">Announcements</h1>
     <ol>
       <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>
       <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>

@@ -1,6 +1,6 @@
 <!--    
-    TODO css styling
     TODO form validation
+    TODO forgot password
  -->
 <template>
     <div class="flex justify-center items-center mt-10"> 
@@ -44,7 +44,6 @@ export default {
     },
     created () {
         this.logout();
-        this.loading = false;
     },
     methods: {
         ...mapActions('account',  ['login', 'logout']),

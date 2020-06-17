@@ -711,7 +711,7 @@ module.exports = {
     gridRow: ['responsive'],
     gridRowStart: ['responsive'],
     gridRowEnd: ['responsive'],
-    transform: ['responsive', 'hover'],
+    transform: ['responsive', 'hover', 'active'],
     transformOrigin: ['responsive', 'hover'],
     scale: ['responsive', 'hover', 'focus'],
     rotate: ['responsive', 'hover', 'focus'],

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-auto md:h-screen bg-orange-100" id="app">
+  <div class="h-auto md:h-screen bg-orange-100 overflow-auto" id="app">
       <div class="md:fixed w-full px-1 md:px-3 py-2 flex justify-start items-center shadow-md bg-orange-100 text-center">
         <img class="rounded-full w-10 transition ease-in-out duration-300 transform hover:scale-125" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png">
         <router-link class="nav-link" to="/">Home</router-link> 
@@ -12,7 +12,9 @@
     <div class="flex justify-center">
       <AlertItem class="" v-if="alert.message" :message="String(alert.message)" @clear="clearAlert"/>
     </div>
-    <router-view class=""/>
+    <transition name="slide-fade" mode="out-in">
+      <router-view/>
+    </transition>
     <FootItem/>
   </div>
 </template>
@@ -49,3 +51,15 @@ export default {
 };
 </script>
 
+<style>
+.slide-fade-enter-active {
+  transition: all .2s ease;
+}
+.slide-fade-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+</style>

@@ -1,6 +1,17 @@
 @tailwind base;
 
 @tailwind components;
+/* Card Styling:
+ * 
+ */
+.transition-grow {
+    @apply transition ease-out duration-500 transform  
+}
+
+.transition-grow:hover {
+    @apply scale-110
+}
+
 
 /*  Input-Base: 
  *    Styling for form input fields
@@ -29,7 +40,7 @@
  *    page headers
  */
 .header-style {
-    @apply font-semibold text-3xl py-4 text-teal-700 tracking-wider;
+    @apply font-semibold text-3xl py-4 text-teal-600 tracking-wider;
 }
 
 /*  Nav-Link:
