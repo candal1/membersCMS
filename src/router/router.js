@@ -9,9 +9,9 @@ import Lessons from '../views/Lessons.vue'
 import Lesson from '../views/Lesson.vue'
 
 Vue.use(VueRouter);
-
+// TODO re-enable history mode; it cant be used with github pages
 export const router = new VueRouter({
-  mode: 'history',
+ // mode: 'history',
   routes: [
     {
       path: '/',
