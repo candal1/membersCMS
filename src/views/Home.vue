@@ -1,24 +1,36 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div class="xl:grid grid-cols-2 gap-5 p-5 md:p-24">
+
+  <div class="flex flex-col text-gray-600">
+    <div class="flex pr-4">
+      <img class="object-contain" alt="Dolphin H.H. emblem" src="../assets/dhh_tran.png">
+      <img class="object-contain" alt="Dolphin H.H. logo" src="../assets/dhh_logo_words.png">
+    </div>
+    <h1 class="header-style">Welcome...</h1>
+    <p class="text-s">Lorem ipsum dolor sit amet consectetur, 
+      adipisicing elit. Deleniti illum obcaecati dolorem hic vero 
+      quis nulla assumenda veritatis quos odit quia laboriosam quidem 
+      nihil exercitationem praesentium sapiente impedit tempora, fugiat 
+      animi cumque excepturi distinctio! Architecto ex consectetur iusto 
+      mollitia esse maiores laudantium necessitatibus, unde similique repellat 
+      animi omnis labore distinctio.</p>
   </div>
+
+  <div class="flex flex-col text-gray-600">
+    <h1 class="header-style">Announcements</h1>
+    <ol>
+      <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>
+      <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>
+      <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>
+      <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, quis.</li>
+    </ol>
+  </div>
+</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
 }
 </script>
 
-<style scoped>
-p {
-  width: 20em; 
-}
-</style>

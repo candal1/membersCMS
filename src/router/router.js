@@ -5,11 +5,13 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import About from '../views/About.vue'
 import Registration from '../views/Registration.vue'
+import Lessons from '../views/Lessons.vue'
+import Lesson from '../views/Lesson.vue'
 
 Vue.use(VueRouter);
-
+// TODO re-enable history mode; it cant be used with github pages
 export const router = new VueRouter({
-  mode: 'history',
+ // mode: 'history',
   routes: [
     {
       path: '/',
@@ -31,22 +33,33 @@ export const router = new VueRouter({
       name: 'About',
       component: About
     },
-    { // redirct to login
-      path: '*',
-      redirect: '/'
+    {
+      path: '/lessons',
+      name: 'Lessons',
+      component: Lessons
+    },
+    
+    {
+      path: '/lessons/:id',
+      name: 'Lesson',
+      component: Lesson
     }
+    // { // redirct to login
+    //   path: '*',
+    //   redirect: '/'
+    // }
   ]
 })
 
 //check for auth on page
-router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/register'];
-  const authRequired = !publicPages.includes(to.path);
-  const loggedIn = localStorage.getItem('user');
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ['/login', '/register'];
+//   const authRequired = !publicPages.includes(to.path);
+//   const loggedIn = localStorage.getItem('user');
 
-  if (authRequired && !loggedIn) {
-    return next('/login');
-  }
+//   if (authRequired && !loggedIn) {
+//     return next('/login');
+//   }
 
-  next();
-})
+//   next();
+// })

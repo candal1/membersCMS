@@ -1,34 +1,50 @@
 <template>
-  <div id="app">
-    <div id="nav" v-show="loggedIn">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="h-auto md:h-screen bg-orange-100 overflow-auto" id="app">
+      <div class="md:fixed w-full px-1 md:px-3 py-2 flex justify-start items-center shadow-md bg-orange-100 text-center">
+        <img class="rounded-full w-10 transition ease-in-out duration-300 transform hover:scale-125" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png">
+        <router-link class="nav-link" to="/">Home</router-link> 
+        <router-link class="nav-link" to="/lessons">Lessons</router-link>
+        <router-link class="nav-link" to="/about">About</router-link>
+        <router-link v-if="!loggedIn" class="nav-link ml-auto" to="/login">Login</router-link> 
+        <router-link v-if="!loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none" to="/register">Sign Up</router-link> 
+        <router-link v-if="loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none ml-auto" to="/login">Logout</router-link> 
+      </div>
+    <div class="flex justify-center">
+      <AlertItem class="" v-if="alert.message" :message="String(alert.message)" @clear="clearAlert"/>
     </div>
-    <div id="alert" v-if="alert.message" :class="`alert ${alert.type}`">{{alert.message}}</div>
-    <router-view></router-view>
+    <transition name="slide-fade" mode="out-in">
+      <router-view/>
+    </transition>
+    <FootItem/>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import AlertItem  from '@/components/AlertItem.vue'
+import FootItem from '@/components/FootItem.vue'
 
 export default {
     name: 'app',
+    components: {
+      AlertItem,
+      FootItem
+    },
     computed: {
-        ...mapState({ 
-            alert: state => state.alert,
-            loggedIn: state => state.account.status.loggedIn
-        })
+      ...mapState({ 
+        alert: state => state.alert,
+        loggedIn: state => state.account.status.loggedIn
+      })
     },
     methods: {
-        ...mapActions({
-            clearAlert: 'alert/clear' 
-        })
+      ...mapActions({
+        clearAlert: 'alert/clear' 
+      })
     },
     watch: {
-        $route (){
-            // clear alert on location change
+        // clear alerts on page change
+        // eslint-disable-next-line no-unused-vars
+        $route (to, from){
             this.clearAlert();
         }
     } 
@@ -36,32 +52,14 @@ export default {
 </script>
 
 <style>
-#alert {
-  font-size: 12px;
-  width: 15em;
-  margin: auto;
-  padding: 1em;
-  border: 2px solid rgba(255, 60, 0, 0.877);
-  border-radius: 10px;
+.slide-fade-enter-active {
+  transition: all .2s ease;
 }
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-align: center;
-  color: #2c3e50;
+.slide-fade-leave-active {
+  transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>

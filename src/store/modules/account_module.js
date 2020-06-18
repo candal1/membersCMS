@@ -4,9 +4,8 @@
     TODO see if we can login with either userrname or email
          ...currently juse email is supported
 */
-import { router } from '../router';
+import { router } from '../../router';
 import DirectusSDK from "@directus/sdk-js";
-//import { helperFunctions } from '../services';
 
 // Directus SDK configured to use local storage for api session
 const client = new DirectusSDK({
