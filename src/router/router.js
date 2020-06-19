@@ -36,18 +36,17 @@ export const router = new VueRouter({
     {
       path: '/lessons',
       name: 'Lessons',
-      component: Lessons
+      component: Lessons,
     },
-    
     {
       path: '/lessons/:id',
       name: 'Lesson',
       component: Lesson
+    },
+    { // redirct to login
+      path: '*',
+      redirect: '/'
     }
-    // { // redirct to login
-    //   path: '*',
-    //   redirect: '/'
-    // }
   ]
 })
 

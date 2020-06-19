@@ -3,8 +3,7 @@
 
   <div class="flex flex-col text-gray-600">
     <div class="flex pr-4">
-      <img class="object-contain" alt="Dolphin H.H. emblem" src="../assets/dhh_tran.png">
-      <img class="object-contain" alt="Dolphin H.H. logo" src="../assets/dhh_logo_words.png">
+      <img class="object-contain" alt="Dolphin H.H. logo" src="../assets/dhh_logo_full.png">
     </div>
     <h1 class="header-style">Welcome...</h1>
     <p class="text-s">Lorem ipsum dolor sit amet consectetur, 

@@ -20,9 +20,10 @@
             body: String
         },
         computed: {
-            //Replace spaces with dash, for dynamic route paths on card selection 
+            // Lower, trim and replace spaces in card header, 
+            // for dynamic route names on card selection `
             pathFromHeader: function () {
-                return this.heading.replace(" ", "-");
+                return this.heading.toLowerCase().trim().replace(/\s+/g, "-");
             }
         }
     }
