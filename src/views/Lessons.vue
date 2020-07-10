@@ -15,14 +15,14 @@
             return {
                 lessons: [
                     {
-                        imgSource: require('../assets/reiki.jpg'),
+                        imgSource: require('../assets/lessons/reiki.jpg'),
                         imgAlt: 'reiki hands',
                         heading: 'Reiki Workshop',
                         body: 'Reiki is one of the simplest, and possibly most effective methods of holistic healing in the civilized world.'
                     },
                     
                     {
-                        imgSource: require('../assets/dolphin_logo.png'),
+                        imgSource: require('../assets/dhh_tran.png'),
                         imgAlt: 'reiki',
                         heading: 'Reiki',
                         body: 'Reiki is a thing'
@@ -30,5 +30,14 @@
                 ]
             }
         },
+        created () {
+            this.$client.getItems('lessons')
+            .then( data => {
+                console.log(JSON.stringify(data));
+            })
+            .catch( error => {
+                console.log(JSON.stringify(error));
+            })
+        }
     }
 </script>
