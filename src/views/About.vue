@@ -8,8 +8,6 @@
 </template>
 
 <script>
-import DirectusSDK from "@directus/sdk-js";
-
   export default { 
     name: 'About',
     data () {
@@ -18,13 +16,16 @@ import DirectusSDK from "@directus/sdk-js";
           text: ''
       }
     },
-    created () {
-      const client2 = new DirectusSDK({url: "http://localhost:8082", project: "_"});
-      client2.getItems("about_page")
+    beforeMount () {
+      this.$client.getItems("about_page")
       .then (data => {
         this.header = data['data'][0]['header'];
         this.text = data['data'][0]['body2'];
         })
+      .catch( error => {
+        this.text = error['info']['error']['message'];
+        localStorage.setItem('error', JSON.stringify(error))
+      })
 
     }
   }

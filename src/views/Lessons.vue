@@ -30,5 +30,14 @@
                 ]
             }
         },
+        created () {
+            this.$client.getItems('lessons')
+            .then( data => {
+                console.log(JSON.stringify(data));
+            })
+            .catch( error => {
+                console.log(JSON.stringify(error));
+            })
+        }
     }
 </script>

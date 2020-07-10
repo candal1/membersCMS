@@ -10,7 +10,7 @@
         <router-link v-if="loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none ml-auto" to="/login">Logout</router-link> 
       </div>
     <div class="flex justify-center">
-      <AlertItem class="" v-if="alert.message" :message="String(alert.message)" @clear="clearAlert"/>
+      <AlertItem v-if="alert.message" :message="String(alert.message)" @clear="clearAlert"/>
     </div>
     <transition name="slide-fade" mode="out-in">
       <router-view/>
