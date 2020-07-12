@@ -59,7 +59,7 @@ export default {
   transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to {
-  transform: translateX(10px);
+  transform: translateX(0.625rem);
   opacity: 0;
 }
 </style>
