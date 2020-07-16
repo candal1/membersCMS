@@ -14,7 +14,6 @@
     --transform-scale-y: 1.05;
 }
 
-
 /*  Input-Base: 
  *    Styling for form input fields
  */
@@ -58,9 +57,19 @@
     @apply outline-none;
 }
 
-/*  Loader:
+/*  Loaders:
  *    css render and animation for loading spinner (from w3schools example)
  */
+.page_loader {
+    border: 2rem solid #cecfd1; /* Light grey */
+    border-top: 2rem solid #38b2ac; /* Teal */
+    border-radius: 15rem;
+    width: 15rem;
+    height: 15rem;
+    animation: spin 2s linear infinite;
+    opacity: 0.3;
+}
+
 .loader {
     border: .5rem solid #cecfd1; /* Light grey */
     border-top: .5rem solid #38b2ac; /* Teal */
@@ -69,6 +78,7 @@
     height: 2rem;
     animation: spin 2s linear infinite;
 }
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

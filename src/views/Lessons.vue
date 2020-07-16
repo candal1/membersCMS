@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <!-- <div id="page" class="flex flex-col md:flex-row justify-center content-center items-center md:gap-10 py-10"> -->
-        <div id="page" class="flex flex-col md:flex-row flex-wrap justify-center content-center items-center md:gap-10 py-24 ">
-            <LessonCard v-for="lesson in lessonsArray" :key="lesson.heading" :imgSrc="lesson.imgSource" :imgAlt="lesson.imgAlt" :heading="lesson.heading" :body="lesson.body" :id="lesson.id" :loaded="lesson.loaded" />
+    <div class="flex justify-center mt-12 md:mt-24 mb-12 mx-2">
+        <div v-show="!loaded" class="flex">
+            <span  class="page_loader"/>
         </div>
+        <transition-group id="page" name="fade" tag="LessonCard" class="flex flex-wrap justify-center items-center gap-10 max-w-6xl">
+            <LessonCard v-for="lesson in lessonsArray" :key="lesson.heading" :imgSrc="lesson.imgSource" :imgAlt="lesson.imgAlt" :heading="lesson.heading" :body="lesson.body" :id="lesson.id" />
+        </transition-group>
     </div>
 </template>
 
@@ -17,48 +19,30 @@
         },
         data () {
             return {
-                initlength: 0,
+                loaded: false,
                 lessonsArray: [
-                    {
-                        imgSource: require('../assets/skelatonImg.png'),
-                        imgAlt: 'reiki hands',
-                        heading: 'Lorem ipsum dolor',
-                        body: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti illum obcaecati dolorem hic vero quis nulla assumenda veritatis quos.',
-                        id: null,
-                        loaded: false
-                    },
-                    {
-                        imgSource: require('../assets/skelatonImg.png'),
-                        imgAlt: 'reiki hands',
-                        heading: 'Lorem ipsum dolor',
-                        body: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti illum obcaecati dolorem hic vero quis nulla assumenda veritatis quos.',
-                        id: null,
-                        loaded: false
-                    },
-                    {
-                        imgSource: require('../assets/skelatonImg.png'),
-                        imgAlt: 'reiki hands',
-                        heading: 'Lorem ipsum dolor',
-                        body: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti illum obcaecati dolorem hic vero quis nulla assumenda veritatis quos.',
-                        id: null,
-                        loaded: false
-                    }
                 ]
             }
         },
         created () { 
             // Get "published" items from 'lessons' collection
+            // eslint-disable-next-line no-unused-vars
             // we also only request the fields we need as some are used for the specific lesson's page
-            this.initLength = this.lessonsArray.length;
             this.$client.getItems('lessons', { fields: 'id,card_image_alt,card_header,card_body,card_image.*', filter: { status: 'published'}})
             .then( lessons => {
-                lessons['data'].forEach(item => {
-                    this.delayPush(item);
-                });
-                while(this.initLength > 0){ // clear off any leftover skelaton cards
-                    this.lessonsArray.shift()
-                    this.initLength--;
-                }
+                // eslint-disable-next-line no-unused-vars
+                lessons['data'].forEach( (obj,index) => {
+                    setTimeout(() => {
+                        this.lessonsArray.push({
+                            imgSource: obj['card_image']['data']['full_url'],
+                            imgAlt: obj['card_image_alt'],
+                            heading: obj['card_header'],
+                            body: obj['card_body'],
+                            id: obj['id']
+                        })
+                    }, (index+1)* 150);
+                })
+                this.loaded= true;
             })
             .catch( error => {
                 this.setAlert(error)
@@ -66,22 +50,6 @@
         },
         methods: {
             ...mapActions({ setAlert: 'alert/error'}),
-            delayPush (item) {
-                setTimeout(() => {
-                    this.lessonsArray.push({
-                        imgSource: item['card_image']['data']['full_url'],
-                        imgAlt: item['card_image_alt'],
-                        heading: item['card_header'],
-                        body: item['card_body'],
-                        id: item['id'],
-                        loaded: true
-                    })
-                }, 100)
-                    if(this.initLength > 0){ // pop skelaton cards off as we load in data
-                        this.lessonsArray.shift()
-                        this.initlength--;
-                    }
-            }
         }
     }
 </script>
@@ -89,5 +57,14 @@
 <style scoped>
 #page {
     min-height: 42rem;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .75s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
