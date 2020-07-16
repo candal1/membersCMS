@@ -2,7 +2,7 @@
 <div class="flex justify-center">
   <div class="grid gap-5 m-10 mt-20 p-10 rounded text-gray-600">
     <h1 class="header-style font-semibold">{{ header }}</h1>
-    <span v-html="text"></span> <!--TODO consider sanitizing v-html content -->
+    <span v-html="text"/> <!--TODO consider sanitizing v-html content -->
   </div>
   </div>
 </template>

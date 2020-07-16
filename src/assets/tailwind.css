@@ -1,15 +1,17 @@
 @tailwind base;
 
 @tailwind components;
-/* Card Styling:
- * 
- */
-.transition-grow {
-    @apply transition ease-out duration-500 transform  
+/*
+*   transitions to scale and grow an item (card)
+*/
+.transition-grow-shadow {
+    @apply shadow-md transition ease-out duration-500 transform;
 }
 
-.transition-grow:hover {
-    @apply scale-110
+.transition-grow-shadow:hover {
+    @apply shadow-2xl;
+    --transform-scale-x: 1.05;
+    --transform-scale-y: 1.05;
 }
 
 
