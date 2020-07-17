@@ -19,9 +19,13 @@
         },
         data () {
             return {
-                loaded: false,
                 lessonsArray: [
                 ]
+            }
+        },
+        computed: {
+           loaded: function () {
+               return this.lessonsArray.length;
             }
         },
         created () { 
@@ -42,7 +46,6 @@
                         })
                     }, (index+1) * 20);
                 })
-                this.loaded= true;
             })
             .catch( error => {
                 this.setAlert(error)

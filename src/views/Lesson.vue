@@ -20,17 +20,16 @@
         data() {
             return {
                 page_data: '',
-                title: ''
+                title: '',
             }
         },
         computed: {
-            // show skelaton until page_data and title have data 
             loaded: function () {
-                return (this.page_data != '') && (this.title != '');
+               return (this.page_data != '') && (this.title != '');
             }
         },
         created () {
-            // pull in page_data and header from directus using the pKey from the selected card on the lessons page
+            // pull in page_data from directus using the pKey from the selected card on the lessons page
             this.$client.getItems('lessons', { fields: 'page_data,card_header', filter: { id: this.$route.params.key }})
             .then( lesson => {
                 localStorage.setItem('lesson_data', JSON.stringify(lesson));
