@@ -3,7 +3,7 @@
         <div v-show="!loaded" class="flex">
             <span  class="page_loader"/>
         </div>
-        <transition-group id="page" name="fade" tag="LessonCard" class="flex flex-wrap justify-center items-center gap-10 max-w-6xl">
+        <transition-group id="page" name="fade" tag="LessonCard" class="flex flex-wrap justify-center items-cente gap-10 max-w-10xl">
             <LessonCard v-for="lesson in lessonsArray" :key="lesson.heading" :imgSrc="lesson.imgSource" :imgAlt="lesson.imgAlt" :heading="lesson.heading" :body="lesson.body" :id="lesson.id" />
         </transition-group>
     </div>
@@ -40,7 +40,7 @@
                             body: obj['card_body'],
                             id: obj['id']
                         })
-                    }, (index+1)* 150);
+                    }, (index+1) * 20);
                 })
                 this.loaded= true;
             })
@@ -56,11 +56,11 @@
 
 <style scoped>
 #page {
-    min-height: 42rem;
+    min-height: 60rem;
 }
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .75s;
+  transition: opacity 1.5s;
 }
 
 .fade-enter,
