@@ -1,8 +1,8 @@
 <template>
-<div class="flex justify-center">
-  <div class="grid gap-5 m-10 mt-20 p-10 rounded text-gray-600">
-    <h1 class="header-style font-semibold">{{ header }}</h1>
-    <span v-html="text"></span> <!--TODO consider sanitizing v-html content -->
+<div class="flex justify-center mt-24 mb-12">
+  <div class="px-10 pb-10 rounded-lg shadow-lg text-gray-600 bg-white max-w-6xl">
+    <h1 class="header-style font-semibold text-center">{{ header }}</h1>
+    <span v-html="text"/> <!--TODO consider sanitizing v-html content -->
   </div>
   </div>
 </template>

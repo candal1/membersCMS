@@ -1,5 +1,5 @@
 <template>
-<div class="xl:grid grid-cols-2 gap-5 p-5 md:p-24">
+<div class="xl:grid grid-cols-2 gap-5 p-5 md:p-20">
 
   <div class="flex flex-col text-gray-600">
     <div class="flex pr-4">
