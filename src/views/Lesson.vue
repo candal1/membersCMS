@@ -1,15 +1,13 @@
 <template>
     <div class="flex flex-col items-center mt-12 md:mt-24 mb-12 mx-auto max-w-6xl">
-        <transition name="fade">
-            <div v-show="loaded" class="text-teal-600 rounded-lg shadow-lg py-8 px-10 bg-white w-full">
-                <h1 class="text-4xl text-center pb-5">{{title}}</h1>
-                <span v-html="page_data" class="flex flex-col items-center gap-10"/> <!--TODO consider sanitizing v-html content -->
-            </div>
-        </transition>
-        <!-- <div v-else class="w-full rounded-lg shadow-lg px-10 py-8 bg-white">
-            <h1 class="text-4xl bg-gray-300 text-gray-300 rounded-lg text-center mb-5">NULL</h1>
-            <p class="text-center bg-gray-200 text-gray-200 rounded-lg mb-2 h-64">NULL</p>
-        </div> -->
+        <div id="page">
+            <transition name="fade">
+                <div v-if="loaded" class="text-teal-600 rounded-lg shadow-lg py-8 px-10 bg-white w-full">
+                    <h1 class="text-4xl text-center pb-5">{{title}}</h1>
+                    <span v-html="page_data" class="flex flex-col items-center gap-10"/> 
+                </div>
+            </transition>
+        </div>
         <router-link class="btn-teal mt-8 ml-auto" to="/lessons">Back to Lessons</router-link>
     </div>
 </template>
@@ -52,7 +50,7 @@
 <style scoped >
 
 #page {
-    min-height: 100rem;
+    min-height: 20rem;
 }
 
 .fade-enter-active{
