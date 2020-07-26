@@ -17,11 +17,12 @@ const actions = {
     login({ dispatch, commit }, { email, password }) {
         commit('loginRequest', { email });
         
+        // _vm.$client is the global directus SDK instance, defined in main.js 
         // Signs into the directus api storing token in local storage
         this._vm.$client.login({email: email, password: password, mode: "cookie"})
         .then( data => {
 
-            localStorage.setItem('user', JSON.stringify(data));
+            localStorage.setItem('user', JSON.stringify(data['data']));
             commit('loginSuccess', data);
             router.push('/');
         })
