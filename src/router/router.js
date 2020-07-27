@@ -7,6 +7,7 @@ import About from '../views/About.vue'
 import Registration from '../views/Registration.vue'
 import Lessons from '../views/Lessons.vue'
 import Lesson from '../views/Lesson.vue'
+import Account from '../views/Account.vue'
 
 Vue.use(VueRouter);
 // TODO re-enable history mode; it cant be used with github pages
@@ -43,6 +44,11 @@ export const router = new VueRouter({
       name: 'Lesson',
       component: Lesson,
       props: true
+    },
+    {
+      path: '/account/:id',
+      name: 'Account',
+      component: Account,
     },
     { // redirct to login
       path: '*',
