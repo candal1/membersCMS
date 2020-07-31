@@ -623,7 +623,7 @@ module.exports = {
       appearance: ["responsive"],
       backgroundAttachment: ["responsive"],
       backgroundColor: ["responsive", "hover", "focus", "disabled"],
-      backgroundOpacity: ["responsive", "hover", "focus"],
+      backgroundOpacity: ["responsive", "hover", "focus", "disabled"],
       backgroundPosition: ["responsive"],
       backgroundRepeat: ["responsive"],
       backgroundSize: ["responsive"],

@@ -19,20 +19,20 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-import CommentForm from "@/components/CommentForm.vue";
-import CommentList from "@/components/CommentList.vue";
+import { mapActions, mapState } from 'vuex';
+import CommentForm from '@/components/CommentForm.vue';
+import CommentList from '@/components/CommentList.vue';
 
 export default {
-   name: "Lesson",
+   name: 'Lesson',
    components: {
       CommentForm,
       CommentList,
    },
    data() {
       return {
-         page_data: "",
-         title: "",
+         page_data: '',
+         title: '',
          newCommentID: -1,
       };
    },
@@ -41,33 +41,33 @@ export default {
          user: (state) => state.account.user,
       }),
       userId: function() {
-         if (typeof this.user === "undefined" || this.user === null) {
+         if (typeof this.user === 'undefined' || this.user === null) {
             return -1;
          } else {
-            return this.user["id"];
+            return this.user['id'];
          }
       },
       loaded: function() {
-         return this.page_data != "" && this.title != "";
+         return this.page_data != '' && this.title != '';
       },
    },
    created() {
       // pull in page_data from directus using the pKey from the selected card on the lessons page
       this.$client
-         .getItems("lessons", {
-            fields: "page_data,card_header",
+         .getItems('lessons', {
+            fields: 'page_data,card_header',
             filter: { id: this.$route.params.key },
          })
          .then((lesson) => {
-            this.page_data = lesson["data"][0]["page_data"];
-            this.title = lesson["data"][0]["card_header"];
+            this.page_data = lesson['data'][0]['page_data'];
+            this.title = lesson['data'][0]['card_header'];
          })
          .catch((error) => {
             this.setAlert(error);
          });
    },
    methods: {
-      ...mapActions({ setAlert: "alert/error" }),
+      ...mapActions({ setAlert: 'alert/error' }),
       newComment(e) {
          this.newCommentID = e;
       },

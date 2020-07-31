@@ -44,6 +44,9 @@ export default {
             return this.user["id"];
          }
       },
+      pageName: function() {
+         return this.$route.name;
+      },
    },
    methods: {
       ...mapActions({

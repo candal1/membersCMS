@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white max-w-sm lg:max-w-xs w-full overflow-hidden rounded-lg transition-grow-shadow">
+    <div class="bg-white max-w-xs w-full overflow-hidden rounded-lg transition-grow-shadow">
         <router-link class="flex flex-col h-full"  :to="{name: 'Lesson', params: {id: pathFromHeader, key: id}}">
             <img class="w-full flex-grow object-cover" :src="imgSrc" :alt="imgAlt">
             <div class="px-5 pb-5 pt-2 flex-grow-0">

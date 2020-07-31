@@ -37,6 +37,18 @@
    @apply outline-none shadow-outline;
 }
 
+/*  Btn-Teal: 
+ *   button styling for forms, hover to change color, and focus to outline 
+ */
+.btn-base {
+   @apply text-teal-500 font-semibold px-2 rounded;
+}
+.btn-base:hover:enabled {
+   @apply bg-orange-200;
+}
+.btn-base:focus:enabled {
+   @apply outline-none shadow-outline;
+}
 /*  Header-Style 
  *    page headers
  */
@@ -50,6 +62,9 @@
 .nav-link {
    @apply py-2 px-4 text-teal-500 font-semibold;
 }
+/* .nav-link:disabled { */
+   /* @apply bg-orange-200; */
+/* } */
 .nav-link:hover {
    @apply text-teal-800;
 }
