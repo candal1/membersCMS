@@ -18,7 +18,7 @@ const actions = {
       // _vm.$client is the global directus SDK instance, defined in main.js
       // Attempts to signs into the directus SDK client
       this._vm.$client
-         .login({ email: email, password: password })
+         .login({ email: email, password: password, persist: true})
          .then((data) => {
             const newUser = parsingHelpers.accountNormalizer(data['data']);
             localStorage.setItem('user', JSON.stringify(newUser));
