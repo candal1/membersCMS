@@ -22,7 +22,7 @@
             </div>
             <div class="mb-4">
                 <label for="password">Password</label>
-                <PasswordShow @password-update="mapPassword"/>
+                <password-show @password-update="mapPassword"/>
             </div>
             <div class="flex items-center justify-between">
                 <button class="btn-teal" >Register</button>
@@ -40,7 +40,7 @@ import PasswordShow from '@/components/PasswordShow.vue'
 export default {
     name: "Registration",
     components: {
-        PasswordShow
+        'password-show': PasswordShow
     },
     data() {
         return {

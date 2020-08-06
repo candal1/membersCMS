@@ -13,6 +13,7 @@
 import { mapActions } from "vuex";
 
 export default {
+   name: 'CommentForm',
    props: {
       lessonid: [Number, String],
       userId: [Number, String],

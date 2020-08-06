@@ -1,20 +1,20 @@
 <template>
    <div class="w-full">
-      <div v-for="(item, index) in commentItems" :key="item.key" class="flex justify-between mb-2 bg-white pt-5 pb-10 pl-4 pr-10 shadow-md text-gray-600 border rounded relative">
+      <div v-for="(item, index) in commentItems" :key="item.key" class="relative flex justify-between pt-5 pb-10 pl-4 pr-10 mb-2 text-gray-600 bg-white border rounded shadow-md">
          <p>
             {{ item.message }}
          </p>
-         <p class="absolute right-0 bottom-0 pb-2 pr-2 font-semibold tracking-wide text-teal-600 text-sm">
-            <span class="italic tracking-normal text-xs pr-2 underline">{{ item.created }}</span
+         <p class="absolute bottom-0 right-0 pb-2 pr-2 text-sm font-semibold tracking-wide text-teal-600">
+            <span class="pr-2 text-xs italic tracking-normal underline">{{ item.created }}</span
             >{{ item.username }}
          </p>
          <button
             v-if="userId == item.userid"
             title="Delete comment"
-            @click="deleteComment(item.key, index)"
-            class="m-1 transition ease-out duration-200 transform hover:scale-125 focus:outline-none rounded-full opacity-50 hover:opacity-100 absolute right-0 top-0 mr-3 mt-3"
+            @click="deleteComment(item.key, index)" 
+            class="absolute top-0 right-0 m-1 mt-3 mr-3 transition duration-200 ease-out transform rounded-full opacity-50 hover:scale-125 focus:outline-none hover:opacity-100"
          >
-            <img class="w-6 h-auto rounded-full " src="../assets/button_x.png" alt="X button" />
+            <img class="w-6 h-auto rounded-full " src="@/assets/button_x.png" alt="X button" />
          </button>
       </div>
    </div>
@@ -24,6 +24,7 @@
 import { mapActions } from "vuex";
 
 export default {
+   name: 'CommentList',
    props: {
       lessonid: [Number, String],
       newCommentID: Number,

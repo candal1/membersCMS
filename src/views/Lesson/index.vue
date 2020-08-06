@@ -5,7 +5,7 @@
          <div v-if="loaded" class="text-teal-600 relative rounded-lg shadow-lg py-8 px-10 bg-white w-full max-w-6xl">
             <h1 class="text-4xl text-center pb-5">{{ title }}</h1>
             <span v-html="page_data" class="flex flex-col items-center gap-10" />
-            <router-link class="btn-teal absolute mt-3 mr-10 right-0" to="/lessons">Back to Lessons</router-link>
+            <router-link class="bg-teal-500 hover:bg-teal-700 text-white font-bold rounded absolute py-2 px-3 mt-3 mr-10 right-0" to="/lessons">Back to Lessons</router-link>
          </div>
       </transition>
       <transition name="fade">
@@ -20,8 +20,8 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import CommentForm from '@/components/CommentForm.vue';
-import CommentList from '@/components/CommentList.vue';
+import CommentForm from './CommentForm.vue';
+import CommentList from './CommentList.vue';
 
 export default {
    name: 'Lesson',

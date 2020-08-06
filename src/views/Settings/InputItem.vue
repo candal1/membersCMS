@@ -1,12 +1,12 @@
 <template>
-   <form class="w-full relative">
-      <input class="w-1/2 disabled:bg-white focus:shadow-outline outline-none rounded-md pl-1 py-1" type="text" :placeholder="text" v-model="newText" ref="input" :disabled="editing == false" />
-      <button class="btn-base absolute right-0 px-5 disabled:cursor-not-allowed disabled:text-teal-800" v-show="!editing" @click="edit" :disabled="busy == true">
+   <form class="relative w-full" @submit.prevent>
+      <input id="input" class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none disabled:border-none disabled:bg-white focus:shadow-outline" :type="inputType" :placeholder="text" v-model="newText" ref="input" :disabled="editing == false" />
+      <button class="absolute right-0 px-5 py-1 btn-base" v-show="!editing" type="button" @click="edit" :disabled="busy == true">
          Edit
       </button>
       <div v-show="editing" class="inline">
-         <button class="text-red-400 font-semibold hover:text-red-600 absolute right-0 mr-16 pr-2" @click="cancel">cancel</button>
-         <button class="btn-base absolute right-0" @click="submitChange">Submit</button>
+         <button class="absolute right-0 pr-2 mt-1 mr-16 font-semibold text-red-400 hover:text-red-600" type="button" @click="cancel">cancel</button>
+         <button class="absolute right-0 py-1 btn-base" type="submit" @click="submitChange">Submit</button>
       </div>
    </form>
 </template>
@@ -14,7 +14,7 @@
 <script>
 import { mapActions } from 'vuex';
 export default {
-   name: 'inputItem',
+   name: 'InputItem',
    components: {},
    props: {
       type: String,
@@ -30,7 +30,11 @@ export default {
    created() {
       this.newText = this.text;
    },
-   computed: {},
+   computed: {
+      inputType: function() {
+         return this.type == 'name' ? 'text' : 'email';
+      },
+   },
    watch: {
       editing: function() {
          this.$emit('status-change', this.editing);
@@ -41,12 +45,12 @@ export default {
       submitChange() {
          var fields; // stores either email or names
          var stop = false;
-         // make fields obj to send request
+         // select fields to post and detect string errors
          switch (this.type) {
             case 'name':
                var names = this.newText.split(' ');
                if (names.length != 2) {
-                  this.setAlert('Name must be two words: First and Last');
+                  this.emitAlert('error', 'Name must be two words: First and Last');
                   this.newText = this.text;
                   stop = true;
                   break;
@@ -54,6 +58,11 @@ export default {
                fields = { first_name: names[0], last_name: names[1] };
                break;
             case 'email':
+               if (this.newText.length == 0) {
+                  stop = true;
+                  this.emitAlert('error', 'Email should not be blank');
+                  this.newText = this.text;
+               }
                fields = { email: this.newText };
                break;
          }
@@ -64,11 +73,14 @@ export default {
                .updateUser(this.$route.params.id, fields)
                .then(() => {
                   this.updateField([this.type, this.newText]);
+                  this.emitAlert('success', this.type.charAt(0).toUpperCase() + this.type.slice(1) + ' changed succesfully');
                })
                .catch((error) => {
-                  this.setAlert(error);
+                  this.cancel();
+                  this.emitAlert('failure', error); //TODO parse error msg
                });
          }
+         this.$refs.input.blur();
          this.editing = !this.editing;
       },
       edit() {
@@ -82,6 +94,16 @@ export default {
          this.newText = this.text;
          this.editing = false;
       },
+      emitAlert(type, msg) {
+         this.$emit('alert-event', { type: type, message: msg });
+      },
    },
 };
 </script>
+
+<style scoped>
+/* adjust input margins on disabled */
+#input:disabled {
+   margin-bottom: 6px;
+}
+</style>

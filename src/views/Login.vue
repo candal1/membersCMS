@@ -12,7 +12,7 @@
          </div>
          <div class="mb-4">
             <label for="password">Password</label> <br />
-            <passwordShow @password-update="mapPassword" placeholder="Enter password..." />
+            <password-show @password-update="mapPassword" placeholder="Enter password..." />
          </div>
          <div class="flex items-center justify-between">
             <button class="btn-teal" :disabled="status.loggingIn">Login</button>
@@ -30,7 +30,7 @@ import PasswordShow from "@/components/PasswordShow.vue";
 export default {
    name: "Login",
    components: {
-      PasswordShow,
+      'password-show':PasswordShow,
    },
    data() {
       return {

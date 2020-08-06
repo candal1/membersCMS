@@ -27,9 +27,9 @@ export default {
       };
    },
    created() {
-      this.imgSource = require("../assets/show-pass.png");
+      this.imgSource = require("@/assets/show-pass.png");
       this.image1 = this.imgSource;
-      this.image2 = require("../assets/hide-pass.png");
+      this.image2 = require("@/assets/hide-pass.png");
    },
    methods: {
       showPass() {

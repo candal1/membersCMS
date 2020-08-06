@@ -1,35 +1,33 @@
 <template>
    <div class="h-auto md:h-screen bg-orange-100 overflow-x-auto" id="app">
-      <div class="w-full px-1 md:px-3 py-2 flex flex-wrap items-center shadow-md bg-orange-100 text-center md:fixed z-30">
+      <div class="w-full px-1 md:px-3 py-2 flex flex-wrap items-center shadow-md bg-orange-100 text-center md:fixed z-40">
          <img class="rounded-full w-10" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png" />
          <router-link class="nav-link" to="/">Home</router-link>
          <router-link class="nav-link" to="/lessons">Lessons</router-link>
          <router-link class="nav-link" to="/about">About</router-link>
          <router-link v-if="!loggedIn" class="nav-link ml-auto" to="/login">Login</router-link>
          <router-link v-if="!loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none" to="/register">Sign Up</router-link>
-         <router-link v-if="loggedIn" class="nav-link ml-auto" :to="{ name: 'Account', params: { id: id } }">Account</router-link>
+         <router-link v-if="loggedIn" class="nav-link ml-auto" :to="{ name: 'Settings', params: { id: id } }">Settings</router-link>
          <router-link v-if="loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none" to="/login">Logout</router-link>
       </div>
-      <div v-if="alert.message" class="flex justify-center">
-         <AlertItem :message="String(alert.message)" @clear="clearAlert" />
-      </div>
+      <alert-modal />
       <transition name="slide-fade" mode="out-in">
-         <router-view class="" />
+         <router-view :class="alert.message ? 'blurObject' : ''" />
       </transition>
-      <FootItem />
+      <footer-item :class="alert.message ? 'blurObject' : ''" />
    </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import AlertItem from "@/components/AlertItem.vue";
-import FootItem from "@/components/FootItem.vue";
+import { mapState, mapActions } from 'vuex';
+import AlertModal from '@/components/AlertModal.vue';
+import FooterItem from '@/components/FooterItem.vue';
 
 export default {
-   name: "app",
+   name: 'app',
    components: {
-      AlertItem,
-      FootItem,
+      'alert-modal': AlertModal,
+      'footer-item': FooterItem,
    },
    computed: {
       ...mapState({
@@ -38,10 +36,10 @@ export default {
          loggedIn: (state) => state.account.status.loggedIn,
       }),
       id: function() {
-         if (typeof this.user === "undefined") {
+         if (typeof this.user === 'undefined') {
             return -1;
          } else {
-            return this.user["id"];
+            return this.user['id'];
          }
       },
       pageName: function() {
@@ -50,7 +48,7 @@ export default {
    },
    methods: {
       ...mapActions({
-         clearAlert: "alert/clear",
+         clearAlert: 'alert/clear',
       }),
    },
    watch: {
@@ -63,7 +61,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.blurObject {
+   opacity: 65%;
+   filter: blur(0.1rem);
+   -webkit-filter: blur(0.1rem);
+   transition: 0.21s filter ease;
+   -webkit-transition: 0.21s -webkit-filter ease;
+}
 .slide-fade-enter-active {
    transition: all 0.2s ease;
 }
