@@ -1,9 +1,11 @@
 <template>
    <div class="flex justify-center mt-24 mb-12">
-      <div class="px-10 pb-10 rounded-lg shadow-lg text-gray-600 bg-white max-w-6xl mx-3">
-         <h1 class="header-style text-center">{{ header }}</h1>
-         <span v-html="text" />
-         <!--TODO consider sanitizing v-html content -->
+      <div v-show="!loaded" class="flex">
+         <span class="page_loader" />
+      </div>
+      <div v-show="loaded" class="max-w-6xl px-10 pb-10 mx-3 text-gray-600 bg-white rounded-lg shadow-lg">
+         <h1 class="text-center header-style">{{ header }}</h1>
+         <span v-html="text"/> <!--TODO consider sanitizing v-html content -->
       </div>
    </div>
 </template>
@@ -17,6 +19,11 @@ export default {
          header: '',
          text: '',
       };
+   },
+   computed: {
+      loaded: function() {
+         return this.text ? true : false;
+      },
    },
    beforeMount() {
       this.$client
