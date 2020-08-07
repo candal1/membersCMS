@@ -5,8 +5,8 @@
             -> add form unmasking to password field 
 -->
 <template>
-    <div class="flex justify-center items-center mt-10"> 
-        <form class="bg-white shadow-md rounded my-20 py-10 px-12 mx-4 text-gray-600" @submit.prevent="handleSubmit">
+    <div class="flex items-center justify-center"> 
+        <form class="px-12 py-10 mx-4 my-12 text-gray-600 bg-white rounded shadow-md md:my-32 " @submit.prevent="handleSubmit">
             <h2 class="header-style">Register</h2>
             <div class="mb-4">
                 <label for="firstName">First Name</label>
@@ -26,7 +26,7 @@
             </div>
             <div class="flex items-center justify-between">
                 <button class="btn-teal" >Register</button>
-                <router-link class="nav-link inline-block" to="/login">Back</router-link>
+                <router-link class="inline-block nav-link" to="/login">Back</router-link>
                 <span v-show="status.registering" class="loader"/>
             </div>
         </form>
