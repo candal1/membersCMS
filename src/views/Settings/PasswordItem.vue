@@ -2,7 +2,7 @@
    <form class="relative w-full" @submit.prevent>
       <div class="relative inline-flex w-1/2 mb-1 rounded-md focus-within:shadow-outline disabled-div" :disabled="editing == false">
          <input class="w-full py-1 pl-1 rounded outline-none disabled:bg-white" :type="type" :placeholder="text" v-model="newText" :disabled="editing == false" ref="input" />
-         <button class="absolute right-0 w-6 h-6 mt-1 mr-1 focus:outline-none" type="button" v-show="editing" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass">
+         <button class="absolute right-0 w-6 h-6 mt-1 mr-1 focus:outline-none" type="button" v-show="editing" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass" @touchstart="showPass" @touchend="hidePass">
             <img class="opacity-25 appearance-none hover:opacity-75" :src="img" />
          </button>
       </div>

@@ -4,9 +4,9 @@
 
 -->
 <template>
-   <div class="flex items-center shadow appearance-none border rounded bg-white w-full h-full text-gray-700 leading-tight focus-within:outline-none focus-within:shadow-outline relative">
-      <input class="flex-grow rounded p-2" @input="emitPassword" required :type="fieldType" v-model="password" name="password" :placeholder="placeholder" />
-      <button class="w-6 h-6 mr-2 focus:outline-none absolute right-0" type="button" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass"><img class="appearance-none opacity-25 hover:opacity-75" :src="imgSource" /></button>
+   <div class="relative flex items-center w-full h-full leading-tight text-gray-700 bg-white border rounded shadow appearance-none focus-within:outline-none focus-within:shadow-outline">
+      <input class="flex-grow p-2 rounded" @input="emitPassword" required :type="fieldType" v-model="password" name="password" :placeholder="placeholder" />
+      <button class="absolute right-0 w-6 h-6 mr-2 focus:outline-none" type="button" @mousedown="showPass" @mouseup="hidePass" @mouseleave="hidePass" @touchstart="showPass" @touchend="hidePass" @touchcancel="hidePass"><img class="opacity-25 appearance-none hover:opacity-75" :src="imgSource" /></button>
    </div>
 </template>
 
