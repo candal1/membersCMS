@@ -1,6 +1,14 @@
 <template>
    <form class="relative w-full" @submit.prevent>
-      <input id="input" class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none disabled:border-none disabled:bg-white focus:shadow-outline" :type="inputType" :placeholder="text" v-model="newText" ref="input" :disabled="editing == false" />
+      <input
+         id="input"
+         class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none disabled:border-none disabled:bg-white focus:shadow-outline"
+         :type="inputType"
+         :placeholder="text"
+         v-model="newText"
+         ref="input"
+         :disabled="editing == false"
+      />
       <button class="absolute right-0 px-5 py-1 btn-base" v-show="!editing" type="button" @click="edit" :disabled="busy == true">
          Edit
       </button>
@@ -13,31 +21,16 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { input } from './InputMixins';
 export default {
    name: 'InputItem',
-   components: {},
+   mixins: [input],
    props: {
       type: String,
-      text: String,
-      busy: Boolean,
-   },
-   data() {
-      return {
-         editing: false,
-         newText: '',
-      };
-   },
-   created() {
-      this.newText = this.text;
    },
    computed: {
       inputType: function() {
          return this.type == 'name' ? 'text' : 'email';
-      },
-   },
-   watch: {
-      editing: function() {
-         this.$emit('status-change', this.editing);
       },
    },
    methods: {
@@ -82,20 +75,6 @@ export default {
          }
          this.$refs.input.blur();
          this.editing = !this.editing;
-      },
-      edit() {
-         this.editing = !this.editing;
-         this.newText = '';
-         this.$nextTick(() => {
-            this.$refs.input.focus();
-         });
-      },
-      cancel() {
-         this.newText = this.text;
-         this.editing = false;
-      },
-      emitAlert(type, msg) {
-         this.$emit('alert-event', { type: type, message: msg });
       },
    },
 };
