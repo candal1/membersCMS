@@ -18,7 +18,7 @@
             <img class="px-2 py-1 opacity-25 appearance-none hover:opacity-75" :src="img" />
          </button>
       </div>
-      <button class="absolute right-0 px-5 btn-base disabled:cursor-not-allowed disabled:text-teal-800" type="button" v-show="!editing" @click="edit" :disabled="busy == true">
+      <button class="absolute right-0 px-5 mt-1 btn-base disabled:cursor-not-allowed disabled:text-teal-800" type="button" v-show="!editing" @click="edit" :disabled="busy == true">
          Edit
       </button>
       <div class="absolute right-0 inline-flex mt-1" v-show="editing">
