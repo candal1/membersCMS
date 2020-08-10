@@ -9,12 +9,12 @@
          ref="input"
          :disabled="editing == false"
       />
-      <button class="absolute right-0 px-5 py-1 btn-base" v-show="!editing" type="button" @click="edit" :disabled="busy == true">
+      <button class="absolute right-0 px-5 mt-2 btn-base" v-show="!editing" type="button" @click="edit" :disabled="busy == true">
          Edit
       </button>
-      <div v-show="editing" class="inline">
-         <button class="absolute right-0 pr-2 mt-1 mr-16 font-semibold text-red-400 hover:text-red-600" type="button" @click="cancel">cancel</button>
-         <button class="absolute right-0 py-1 btn-base" type="submit" @click="submitChange">Submit</button>
+      <div v-show="editing" class="absolute right-0 inline-flex mt-2">
+         <button class="font-semibold text-red-400 hover:text-red-600" type="button" @click="cancel">cancel</button>
+         <button class="ml-1 btn-base" type="submit" @click="submitChange">Submit</button>
       </div>
    </form>
 </template>

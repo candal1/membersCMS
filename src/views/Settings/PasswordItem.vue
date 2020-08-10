@@ -21,11 +21,11 @@
       <button class="absolute right-0 px-5 btn-base disabled:cursor-not-allowed disabled:text-teal-800" type="button" v-show="!editing" @click="edit" :disabled="busy == true">
          Edit
       </button>
-      <div class="inline" v-show="editing">
-         <button class="absolute right-0 pr-2 mr-16 font-semibold text-red-400 hover:text-red-600" type="button" @click="cancel">
+      <div class="absolute right-0 inline-flex mt-1" v-show="editing">
+         <button class="font-semibold text-red-400 hover:text-red-600" type="button" @click="cancel">
             cancel
          </button>
-         <button class="absolute right-0 btn-base" type="submit" @click="submitChange">
+         <button class="ml-1 btn-base" type="submit" @click="submitChange">
             Submit
          </button>
       </div>
