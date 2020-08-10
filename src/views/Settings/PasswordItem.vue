@@ -7,16 +7,15 @@
       <div class="relative inline-flex w-1/2 mb-1 rounded-md focus-within:shadow-outline disabled-div" :disabled="editing == false">
          <input class="w-full py-1 pl-1 rounded outline-none disabled:bg-white" :type="type" :placeholder="text" v-model="newText" :disabled="editing == false" ref="input" />
          <button
-            class="absolute right-0 w-6 h-6 mt-1 mr-1 focus:outline-none"
+            class="absolute right-0 w-10 focus:outline-none"
             type="button"
             v-show="editing"
-            @mousedown="showPass"
-            @mouseup="hidePass"
-            @mouseleave="hidePass"
-            @touchstart="showPass"
-            @touchend="hidePass"
+            @mousedown="toggle"
+            @mouseup="toggle"
+            @mouseleave="reset"
+            @touchstart="toggle"
          >
-            <img class="opacity-25 appearance-none hover:opacity-75" :src="img" />
+            <img class="px-2 py-1 opacity-25 appearance-none hover:opacity-75" :src="img" />
          </button>
       </div>
       <button class="absolute right-0 px-5 btn-base disabled:cursor-not-allowed disabled:text-teal-800" type="button" v-show="!editing" @click="edit" :disabled="busy == true">
@@ -49,9 +48,9 @@ export default {
       };
    },
    created() {
-      this.img = require('@/assets/show-pass.png');
-      this.showImg = this.img;
-      this.hideImg = require('@/assets/hide-pass.png');
+      this.img = require('@/assets/hide-pass.png');
+      this.showImg = require('@/assets/show-pass.png');
+      this.hideImg = this.img;
    },
    methods: {
       ...mapActions({ setAlert: 'alert/error' }),
@@ -77,14 +76,15 @@ export default {
             this.$refs.input.blur();
          }
       },
-      // show/hide fields
-      showPass() {
-         this.type = 'text';
-         this.img = this.hideImg;
+      // toggle hide/show fields
+      toggle() {
+         this.type = this.type == 'text' ? 'password' : 'text';
+         this.img = this.img == this.hideImg ? this.showImg : this.hideImg;
       },
-      hidePass() {
+      // reset to defaults
+      reset() {
          this.type = 'password';
-         this.img = this.showImg;
+         this.img = this.hideImg;
       },
    },
 };

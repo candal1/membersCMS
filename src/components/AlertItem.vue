@@ -15,11 +15,9 @@ export default {
    name: 'AlertItem',
    props: {
       type: {
-         // expect certain strings
-
          type: String,
          validator: function(value) {
-            return ['success', 'error', 'failure'].indexOf(value) !== -1;
+            return ['success', 'error', 'failure', ''].indexOf(value) !== -1;
          },
       },
       message: String,
