@@ -41,7 +41,7 @@ export default {
    computed: {
       ...mapState('account', ['status']),
    },
-   created() {
+   created()      {
       this.logout();
    },
    methods: {
