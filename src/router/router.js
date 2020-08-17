@@ -5,8 +5,10 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import About from '../views/About.vue'
 import Registration from '../views/Registration.vue'
-import Lessons from '../views/Lessons.vue'
-import Lesson from '../views/Lesson.vue'
+import Lessons from '../views/Lessons'
+import Lesson from '../views/Lesson'
+import Settings from '../views/Settings'
+import Admin from '../views/Admin'
 
 Vue.use(VueRouter);
 // TODO re-enable history mode; it cant be used with github pages
@@ -43,6 +45,16 @@ export const router = new VueRouter({
       name: 'Lesson',
       component: Lesson,
       props: true
+    },
+    {
+      path: '/settings/:id',
+      name: 'Settings',
+      component: Settings,
+    },
+    {
+      path: '/Admin',
+      name: 'Admin',
+      component: Admin,
     },
     { // redirct to login
       path: '*',

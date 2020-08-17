@@ -5,83 +5,115 @@
 *   transitions to scale and grow an item (card)
 */
 .transition-grow-shadow {
-    @apply shadow-md transition ease-out duration-500 transform;
+   @apply transition duration-500 ease-out transform shadow-md;
 }
 
 .transition-grow-shadow:hover {
-    @apply shadow-2xl;
-    --transform-scale-x: 1.05;
-    --transform-scale-y: 1.05;
+   @apply shadow-2xl;
+   --transform-scale-x: 1.05;
+   --transform-scale-y: 1.05;
 }
 
 /*  Input-Base: 
  *    Styling for form input fields
  */
 .input-base {
-    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight; 
+   @apply w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none;
 }
 .input-base:focus {
-    @apply outline-none shadow-outline;
+   @apply shadow-outline outline-none;
 }
 
 /*  Btn-Teal: 
  *   button styling for forms, hover to change color, and focus to outline 
  */
 .btn-teal {
-    @apply bg-teal-500 text-white font-bold py-2 px-3 rounded;
+   @apply px-3 py-2 font-bold text-white bg-teal-500 rounded;
 }
-.btn-teal:hover {
-    @apply bg-teal-700;
+.btn-teal:hover:enabled {
+   @apply bg-teal-700;
 }
-.btn-teal:focus {
-    @apply outline-none shadow-outline;
+.btn-teal:focus:enabled {
+   @apply shadow-outline outline-none;
+}
+
+/*  Btn-base: 
+ *   button styling for forms, hover to change color, and focus to outline 
+ */
+.btn-base {
+   @apply px-2 font-semibold text-teal-500 rounded;
+}
+.btn-base:hover:enabled {
+   @apply bg-orange-200;
+}
+.btn-base:focus:enabled {
+   @apply shadow-outline outline-none;
+}
+.btn-base:disabled {
+   @apply text-teal-800 cursor-not-allowed;
 }
 
 /*  Header-Style 
  *    page headers
  */
 .header-style {
-    @apply font-semibold text-3xl py-4 text-teal-600 tracking-wider;
+   @apply py-4 text-3xl font-semibold tracking-wider text-teal-600;
 }
 
 /*  Nav-Link:
  *    nav link styling
  */
 .nav-link {
-    @apply py-2 px-4 text-teal-500 font-semibold;
+   @apply px-4 py-2 font-semibold text-teal-500;
 }
 .nav-link:hover {
-    @apply text-teal-800;
+   @apply text-teal-800;
 }
 .nav-link:focus {
-    @apply outline-none;
+   @apply outline-none;
+}
+
+/* Styling for a disabled div
+ * custom css selector for displaying 
+ * border on a disabled div
+ */
+.disabled-div {
+   @apply border;
+}
+.disabled-div[disabled] {
+   @apply border-none;
+   margin-bottom: 6px;
 }
 
 /*  Loaders:
  *    css render and animation for loading spinner (from w3schools example)
  */
 .page_loader {
-    border: 2rem solid #cecfd1; /* Light grey */
-    border-top: 2rem solid #38b2ac; /* Teal */
-    border-radius: 15rem;
-    width: 15rem;
-    height: 15rem;
-    animation: spin 2s linear infinite;
-    opacity: 0.3;
+   border: 2rem solid #cecfd1; /* Light grey */
+   border-top: 2rem solid #38b2ac; /* Teal */
+   border-radius: 15rem;
+   width: 15rem;
+   height: 15rem;
+   animation: spin 2s linear infinite;
+   opacity: 0.3;
 }
 
 .loader {
-    border: .5rem solid #cecfd1; /* Light grey */
-    border-top: .5rem solid #38b2ac; /* Teal */
-    border-radius: 2rem;
-    width: 2rem;
-    height: 2rem;
-    animation: spin 2s linear infinite;
+   border: 0.5rem solid #cecfd1; /* Light grey */
+   border-top: 0.5rem solid #38b2ac; /* Teal */
+   border-radius: 2rem;
+   width: 2rem;
+   height: 2rem;
+   animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
 }
 
 @tailwind utilities;
