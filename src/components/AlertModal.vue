@@ -1,7 +1,7 @@
 <template>
    <div v-if="alertMessage">
       <!-- filter placed beneath modal to capture clicks and prevent outside interaction -->
-      <div class="absolute z-30 w-screen h-screen" @click.capture="clear"></div>
+      <div class="absolute z-30 w-screen h-screen" @click.capture="clearAlert"></div>
       <!-- Main Alert modal -->
       <transition name="fade">
          <div id="main" class="bg-white text-red-500 max-w-md rounded-md border-2 border-red-300 shadow-2xl z-50">
