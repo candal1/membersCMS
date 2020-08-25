@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center w-full max-w-xl px-10 pb-10 mx-3 mb-10 text-gray-600 bg-white rounded-lg shadow-lg">
+    <div class="flex flex-col items-center w-full max-w-xl px-10 pb-10 mx-3 text-gray-600 bg-white rounded-lg shadow-lg">
       <h1 class="text-center header-style">Account Preferences</h1>
       <alert-item :type="alertType" :message="alertMessage" @clear-alert="clearAlert" />
       <div class="w-full mb-5 border-b">
