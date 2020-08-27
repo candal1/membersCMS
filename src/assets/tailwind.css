@@ -85,6 +85,24 @@
    margin-bottom: 6px;
 }
 
+.disabled-fade{
+   opacity: 1;
+   -moz-transition: all 0.2s ease-in;
+   -webkit-transition: all  0.2s ease-in;
+   -o-transition: all 0.2s ease-in;
+   transition: all 0.2s ease-in;
+}
+/* blur and change opacity on disabled*/
+.disabled-fade[disabled] {
+   opacity: 0.55;
+   -moz-transition: all 0.2s ease-in;
+   -webkit-transition: all  0.2s ease-in;
+   -o-transition: all 0.2s ease-in;
+   transition: all 0.2s ease-in;
+}
+
+
+
 /*  Loaders:
  *    css render and animation for loading spinner (from w3schools example)
  */

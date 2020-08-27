@@ -22,7 +22,7 @@ export default {
    },
    computed: {
       loaded: function() {
-         return this.text ? true : false;
+         return !!this.text;
       },
    },
    beforeMount() {
