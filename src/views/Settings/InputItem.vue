@@ -2,19 +2,19 @@
    <form class="relative w-full" @submit.prevent>
      <input
          id="inputField"
-         class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none disabled:border-none disabled:bg-white focus:shadow-outline"
+         class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none bg-gray-100 disabled:border-none disabled:bg-white focus:shadow-outline"
          :type="inputType"
          :placeholder="text"
          v-model="newText"
          ref="input"
          :disabled="editing === false"
       />
-      <button class="absolute right-0 px-5 mt-2 btn-base" v-show="!editing" type="button" @click="edit" :disabled="busy === true">
+      <button class="absolute right-0 px-5 mt-2 btn-base disabled-fade" v-show="!editing" type="button" @click="edit" :disabled="busy === true">
          Edit
       </button>
       <div v-show="editing" class="absolute right-0 inline-flex mt-2">
          <button class="font-semibold text-red-400 hover:text-red-600 focus:outline-none" type="button" @click="cancel">cancel</button>
-         <button class="ml-1 btn-base" type="submit" @click="submitChange">Submit</button>
+         <button class="ml-1 btn-base" type="submit" @click="submitChange" :disabled="newText.length === 0">Submit</button>
       </div>
    </form>
 </template>

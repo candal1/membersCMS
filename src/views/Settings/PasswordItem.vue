@@ -4,7 +4,7 @@
 <template>
    <form class="relative w-full" @submit.prevent>
       <div class="relative inline-flex w-1/2 mb-1 rounded-md focus-within:shadow-outline disabled-div" :disabled="editing === false">
-         <input class="w-full py-1 pl-1 rounded outline-none disabled:bg-white" :type="type" :placeholder="text" v-model="newText" :disabled="editing === false" ref="input" />
+         <input class="w-full py-1 pl-1 rounded outline-none bg-gray-100 disabled:bg-white" :type="type" :placeholder="text" v-model="newText" :disabled="editing === false" ref="input" />
          <button
             class="absolute right-0 w-10 focus:outline-none"
             type="button"
@@ -17,14 +17,14 @@
             <img class="px-2 py-1 opacity-25 appearance-none hover:opacity-75" :src="img"  alt="visible/hidden eye symbol"/>
          </button>
       </div>
-      <button class="absolute right-0 px-5 mt-1 btn-base disabled:cursor-not-allowed disabled:text-teal-800" type="button" v-show="!editing" @click="edit" :disabled="busy === true">
+      <button class="absolute right-0 px-5 mt-1 btn-base disabled:cursor-not-allowed disabled:text-teal-800 disabled-fade" type="button" v-show="!editing" @click="edit" :disabled="busy === true">
          Edit
       </button>
       <div class="absolute right-0 inline-flex mt-1" v-show="editing">
          <button class="font-semibold text-red-400 hover:text-red-600 focus:outline-none" type="button" @click="cancel">
             cancel
          </button>
-         <button class="ml-1 btn-base" type="submit" @click="submitChange">
+         <button class="ml-1 btn-base" type="submit" @click="submitChange" :disabled="newText.length === 0">
             Submit
          </button>
       </div>
