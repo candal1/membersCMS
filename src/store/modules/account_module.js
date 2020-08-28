@@ -4,7 +4,7 @@
          ...currently juse email is supported
 */
 import {router} from '../../router';
-import {parsingHelpers} from '../../utils';
+import {parsingHelpers} from '../helpers';
 import Vue from 'vue';
 
 const user = JSON.parse(localStorage.getItem('user'));
