@@ -3,7 +3,7 @@
     TODO see if we can login with either userrname or email
          ...currently juse email is supported
 */
-import {router} from '../../router';
+import {router} from '@/router';
 import {parsingHelpers} from '../helpers';
 import Vue from 'vue';
 
@@ -62,6 +62,7 @@ const actions = {
                 dispatch('alert/error', error, { root: true });
             });
     },
+    // handle mutations on user state (name, email, subscriptions, etc.)
     updateField({commit, dispatch}, params) {
         const type = params[0];
         const update = params[1];
@@ -69,6 +70,7 @@ const actions = {
         if (!prev) {
             dispatch('alert/error', "Hmmm you don't seem to be properly logged in.", {root: true});
         } else {
+            // Update localStorage values and commit state mutations
             switch (type) {
                 case 'name':
                     prev['first_name'] = update.split(' ')[0];
@@ -78,6 +80,11 @@ const actions = {
                 case 'email':
                     prev['email'] = update;
                     commit('updateEmail', update);
+                    break;
+                case 'subscribe':
+                    prev['role'] = update;
+                    prev['subscription'] = (update === "5" || update === "1");
+                    commit('updateSubscription', [update, prev['subscription']]);
                     break;
             }
             localStorage.setItem('user', JSON.stringify(prev));
@@ -118,6 +125,11 @@ const mutations = {
         state.user['first_name'] = update.split(' ')[0];
         state.user['last_name'] = update.split(' ')[1];
     },
+    updateSubscription(state, update) {
+        state.user['role'] = update[0];
+        state.user['subscription'] = update[1];
+    },
+
 };
 
 export const account = {
