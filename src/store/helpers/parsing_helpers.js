@@ -10,6 +10,7 @@ function accountNormalizer(data) {
             last_name: data["user"]["last_name"],
             email: data["user"]["email"],
             role: data["user"]["role"],
+            // member role or admin gets full access
             subscription: (data["user"]["role"] === "4" || data["user"]["role"] === "1")
         }
     }
