@@ -1,17 +1,17 @@
 <template>
-    <div class="flex flex-col items-center w-full max-w-xl px-10 pb-10 mx-3 text-gray-600 bg-white rounded-lg shadow-lg">
+    <div class="flex flex-col items-center w-full max-w-xl px-10 pb-10 mx-3 text-gray-600 bg-white rounded-lg shadow-lg z-20">
       <h1 class="text-center header-style">Account Preferences</h1>
       <alert-item :type="alertType" :message="alertMessage" @clear-alert="clearAlert" />
       <div class="w-full mb-5 border-b">
-        <p class="text-lg font-semibold text-teal-600">Name:</p>
+        <p class="text-lg font-semibold text-teal-600">Name</p>
         <input-item :text="fullName" type="name" :busy="busy" @status-change="busy = !busy" @alert-event="setAlert" />
       </div>
-      <div class="w-full mb-5 border-b font">
-        <p class="text-lg font-semibold text-teal-600 ">Email:</p>
+      <div class="w-full mb-5 border-b">
+        <p class="text-lg font-semibold text-teal-600 ">Email</p>
         <input-item :text="user['email']" type="email" :busy="busy" @status-change="busy = !busy" @alert-event="setAlert" />
       </div>
       <div class="w-full border-b">
-        <p class="font-semibold text-teal-600 lg inline">Password:</p>
+        <p class="text-lg font-semibold text-teal-600">Password</p>
         <password-item text="**********" :busy="busy" @status-change="busy = !busy" @alert-event="setAlert" />
       </div>
     </div>
