@@ -2,12 +2,12 @@
    <div class="h-auto md:h-screen bg-orange-100 overflow-x-auto" id="app">
       <div class="w-full px-1 md:px-3 py-2 flex flex-wrap items-center shadow-md bg-orange-100 text-center md:fixed z-40">
          <img class="rounded-full w-10" alt="Dolphin H.H. emblem" src="./assets/dhh_tran.png" />
-         <router-link class="nav-link" to="/">Home</router-link>
-         <router-link class="nav-link" to="/lessons">Lessons</router-link>
-         <router-link class="nav-link" to="/about">About</router-link>
-         <router-link v-if="!loggedIn" class="nav-link ml-auto" to="/login">Login</router-link>
+         <router-link class="nav-link" active-class="nav-active" to="/" exact>Home</router-link>
+         <router-link class="nav-link" active-class="nav-active" to="/lessons">Lessons</router-link>
+         <router-link class="nav-link" active-class="nav-active"  to="/about">About</router-link>
+         <router-link v-if="!loggedIn" active-class="nav-active" class="nav-link ml-auto" to="/login">Login</router-link>
          <router-link v-if="!loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none" to="/register">Sign Up</router-link>
-         <router-link v-if="loggedIn" class="nav-link ml-auto" :to="{ name: 'Settings', params: { id: id } }">Settings</router-link>
+         <router-link v-if="loggedIn" active-class="nav-active" class="nav-link ml-auto" :to="{ name: 'Settings', params: { id: id } }">Settings</router-link>
          <router-link v-if="loggedIn" class="py-2 px-4 bg-orange-200 hover:bg-orange-300 text-teal-500 font-semibold rounded-lg focus:outline-none" to="/login">Logout</router-link>
       </div>
       <alert-modal />
