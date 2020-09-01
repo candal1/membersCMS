@@ -71,15 +71,22 @@
  *    nav link styling
  */
 .nav-link {
-    @apply px-3 font-semibold text-teal-500 ;
+    @apply mx-3 font-semibold text-teal-500 ;
 }
 /* Border hover transition */
 .nav-link:after {
     @apply block;
     content: '';
     border-bottom: 2px solid #cbd5e0;
+
+    -moz-transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    -o-transform: scaleX(0);
     transform: scaleX(0);
-    transition: transform 150ms ease-in-out;
+    -moz-transition: -moz-transform 100ms ease-in-out;
+    -webkit-transition: -webkit-transform 100ms ease-in-out;
+    -o-transition: -o-transform 100ms ease-in-out;
+    transition: transform 100ms ease-in-out;
 }
 .nav-link:hover:after {
     @apply transition transform duration-150 ease-in text-teal-800;
@@ -87,15 +94,13 @@
 }
 /* Active navigation link styling */
 .nav-active {
-    @apply transition transform duration-200 ease-in opacity-75 text-teal-800 ;
+    @apply transition transform duration-300 ease-in opacity-75 text-teal-800 ;
     @apply cursor-default;
     border-bottom: 2px solid #cbd5e0;
+
 }
 .nav-active:after {
-    transform: scaleX(0);
-}
-.nav-active:hover:after {
-    transform: scale(0);
+    content: normal;
 }
 
 
