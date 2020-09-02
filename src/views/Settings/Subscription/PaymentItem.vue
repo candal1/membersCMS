@@ -30,7 +30,6 @@ import {loadStripe} from "@stripe/stripe-js";
 export default {
   name: "PaymentItem",
   props: {
-    editing: Boolean,
     formStyle: {
       type: String,
       default: 'w-full relative rounded-lg p-3 border-2 border-red-300'
@@ -120,7 +119,7 @@ export default {
     },
     // Emit cancel status and clear form
     cancel() {
-      this.$emit("cancel");
+
       this.fullName = '';
       this.card.clear();
     }

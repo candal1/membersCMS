@@ -1,16 +1,16 @@
 <template>
-    <div class="flex flex-col items-center w-full max-w-xl px-10 pb-10 mx-3 text-gray-600 bg-white rounded-lg shadow-lg z-20">
+    <div class="flex flex-col items-center w-full max-w-xl px-2 md:px-10 pb-10 mx-3 text-gray-600 bg-white rounded-lg shadow-lg z-20">
       <h1 class="text-center header-style">Account Preferences</h1>
       <alert-item :type="alertType" :message="alertMessage" @clear-alert="clearAlert" />
-      <div class="w-full mb-5 border-b">
+      <div class="w-full mb-5 border-b px-3">
         <p class="text-lg font-semibold text-teal-600">Name</p>
         <input-item :text="fullName" type="name" :busy="busy" @status-change="busy = !busy" @alert-event="setAlert" />
       </div>
-      <div class="w-full mb-5 border-b">
+      <div class="w-full mb-5 border-b px-3">
         <p class="text-lg font-semibold text-teal-600 ">Email</p>
         <input-item :text="user['email']" type="email" :busy="busy" @status-change="busy = !busy" @alert-event="setAlert" />
       </div>
-      <div class="w-full border-b">
+      <div class="w-full border-b px-3">
         <p class="text-lg font-semibold text-teal-600">Password</p>
         <password-item text="**********" :busy="busy" @status-change="busy = !busy" @alert-event="setAlert" />
       </div>
@@ -19,8 +19,8 @@
 
 <script>
 import { mapState } from 'vuex';
-import InputItem from '@/views/Settings/InputItem.vue';
-import PasswordItem from '@/views/Settings/PasswordItem.vue';
+import InputItem from '@/views/Settings/Preferences/InputItem.vue';
+import PasswordItem from '@/views/Settings/Preferences/PasswordItem.vue';
 import AlertItem from '@/components/AlertItem.vue';
 
 export default {

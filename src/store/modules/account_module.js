@@ -20,7 +20,7 @@ const actions = {
         this._vm.$client
             .login({ email: email, password: password, persist: true })
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 const newUser = parsingHelpers.accountNormalizer(data['data']);
                 localStorage.setItem('user', JSON.stringify(newUser));
                 commit('loginSuccess', newUser);

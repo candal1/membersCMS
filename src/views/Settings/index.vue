@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Preferences from "@/views/Settings/Preferences";
-import Subscription from "@/views/Settings/Subscription";
+import Preferences from "@/views/Settings/Preferences/index";
+import Subscription from "@/views/Settings/Subscription/index";
 
 export default {
   name: 'Settings',
