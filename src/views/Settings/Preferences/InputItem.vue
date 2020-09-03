@@ -1,8 +1,7 @@
 <template>
    <form class="relative w-full" @submit.prevent>
      <input
-         id="inputField"
-         class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none bg-gray-100 disabled:border-none disabled:bg-white focus:shadow-outline"
+         class="w-1/2 py-1 pl-1 mt-1 mb-1 border rounded outline-none bg-gray-100 disabled:border-none disabled:bg-white disabled:mb-1.3 focus:shadow-outline"
          :type="inputType"
          :placeholder="text"
          v-model="newText"
@@ -80,10 +79,3 @@ export default {
    },
 };
 </script>
-
-<style scoped>
-/* adjust input margins on disabled */
-#inputField:disabled {
-   margin-bottom: 6px;
-}
-</style>

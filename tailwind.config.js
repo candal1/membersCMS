@@ -111,6 +111,7 @@ module.exports = {
             px: '1px',
             '0': '0',
             '1': '0.25rem',
+            '1.3': '0.375rem',
             '1.5': '0.4rem',
             '2': '0.5rem',
             '3': '0.75rem',
@@ -309,6 +310,7 @@ module.exports = {
         },
         maxWidth: (theme, {breakpoints}) => ({
             none: 'none',
+            xxs: '19rem',
             xs: '20rem',
             sm: '24rem',
             md: '28rem',
