@@ -6,10 +6,10 @@
       <h2 class="text-xs font-bold text-xl text-red-500">$5.00<span class="text-teal-500 font-semibold">/m</span></h2>
       <h2 class="text-xs">Per month<br/>Billed monthly</h2>
     </div>
-    <label class="block text-teal-600 font-semibold mb-1" for="name">Name</label>
-    <input id="name" v-model="fullName"
+    <label class="block text-teal-600 font-semibold mb-1" for="fullName">Name</label>
+    <input id="fullName" v-model="fullName"
            class="rounded-lg border bg-gray-100 mb-4 px-3 py-1 w-full focus:shadow-outline focus:outline-none"
-           placeholder="First and last name"
+           placeholder="First and Last name"
            required
            type="text"/>
     <label class="block text-teal-600 font-semibold mb-1" for="card-element">Card</label>
@@ -119,7 +119,7 @@ export default {
     },
     // Emit cancel status and clear form
     cancel() {
-
+      this.$emit("cancel");
       this.fullName = '';
       this.card.clear();
     }
